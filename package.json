@@ -1,0 +1,33 @@
+{
+    "name": "crestron-ch5",
+    "private": true,
+    "version": "0.0.0",
+    "type": "module",
+    "scripts": {
+        "dev": "vite",
+        "build": "vue-tsc -b && vite build",
+        "preview": "vite preview",
+        "build-tp": "npm run build && ch5-cli archive -p tsw-560 -d dist -o archive",
+        "send-tp": "ch5-cli deploy archive/tsw-560.ch5z -t touchscreen -H 192.168.1.236 -p"
+    },
+    "dependencies": {
+        "@crestron/ch5-crcomlib": "^2.11.2",
+        "@crestron/ch5-theme": "^2.11.2",
+        "@razaman2/reactive-view": "^0.0.19",
+        "@tailwindcss/vite": "^4.0.9",
+        "daisyui": "^5.0.0",
+        "tailwindcss": "^4.0.9",
+        "vue": "^3.5.13",
+        "vue-router": "^4.5.0"
+    },
+    "devDependencies": {
+        "@vitejs/plugin-vue": "^5.2.1",
+        "@vitejs/plugin-vue-jsx": "^4.1.1",
+        "@vue/tsconfig": "^0.7.0",
+        "typescript": "~5.7.2",
+        "vite": "^6.2.0",
+        "vite-plugin-singlefile": "^2.1.0",
+        "vite-plugin-static-copy": "^2.3.0",
+        "vue-tsc": "^2.2.4"
+    }
+}
