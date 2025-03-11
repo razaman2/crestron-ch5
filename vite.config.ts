@@ -9,11 +9,17 @@ import tailwindcss from "@tailwindcss/vite";
 import {viteStaticCopy} from "vite-plugin-static-copy";
 import {viteSingleFile} from "vite-plugin-singlefile";
 
+const compilerOptions = {
+    isCustomElement: (tag) => {
+        return tag.startsWith("ch5-");
+    },
+};
+
 // https://vite.dev/config/
 export default defineConfig({
     plugins: [
-        vue(),
-        jsx(),
+        vue({template: {compilerOptions}}),
+        jsx(compilerOptions),
         tailwindcss(),
         viteStaticCopy({
             targets: [
@@ -23,7 +29,9 @@ export default defineConfig({
                 },
             ],
         }),
-        viteSingleFile(),
+        viteSingleFile({
+            inlinePattern: ["**/*.js"],
+        }),
     ],
     resolve: {
         alias: {
